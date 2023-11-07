@@ -1,5 +1,7 @@
 import skimage as ski
 import matplotlib.pyplot as plt
+import numpy as np
+import pickle
 
 image = ski.io.imread("logo_wide.png")
 
@@ -10,15 +12,10 @@ image = ski.color.rgb2gray(ski.color.rgba2rgb(image))
 harris_image = ski.feature.corner_harris(image)
 equalized_harris = ski.exposure.equalize_hist(harris_image)
 
-import numpy as np
 
 corner_peaks = ski.feature.corner_peaks(harris_image, threshold_rel=0.0000001)
 
-# plt.imshow(image, cmap="gray")
 corners = np.array(corner_peaks).T
-# print(corners)
-# plt.scatter(corners[1], corners[0])
-# plt.figure()
 
 fig,ax = plt.subplots(1,1)
 ax.imshow(image, cmap="gray")
