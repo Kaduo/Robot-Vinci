@@ -5,3 +5,4 @@
 *.webp
 *.pyc
 scraps/*
+!mira_coords.pkl
